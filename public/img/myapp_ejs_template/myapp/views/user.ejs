@@ -1,0 +1,58 @@
+<h1 id="firstHeading" class="first-heading">DEMO APP</h1>
+<div class="container-md">
+  <div id="userList">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(function(val, index) { %>
+          <tr class="user-id" data-userid="<%= val.id %>">
+            <td scope="row"><%= val.id %></td>
+            <td class="username"><%= val.username %></td>
+            <td class="name"><%= val.name %></td>
+            <td class="gender"><%= val.gender %></td>
+            <td>
+              <button class="del-btn btn btn-danger" data-id="<%= val.id %>">Delete</button>
+              <button class="update-btn btn btn-warning" data-id="<%= val.id %>">Update</button>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <form id="createUserForm" method="POST" action="/users/create">
+      <label class="form-label" for="user_id">UserID</label>
+      <input class="form-control" type="text" id="user_id" name="user_id" disabled>
+      <label class="form-label" for="username">Username</label>
+      <input class="form-control" type="text" id="username" name="username">
+      <label class="form-label" for="password">Password</label>
+      <input class="form-control" type="password" id="password" name="password">
+      <label class="form-label" for="name">Name</label>
+      <input class="form-control" type="text" id="name" name="name">
+      <div class="form-check">
+        <label class="input-group form-label"></label>
+        <br>
+        <input class="form-check-input" type="radio" id="male" name="gender" value="male">
+        <label class="form-check-label" for="male">Male</label>
+        <br>
+        <input class="form-check-input" type="radio" id="female" name="gender" value="female">
+        <label class="form-check-label" for="female">Female</label>
+        <br>
+      </div>
+      <input class="btn btn-primary" type="submit" value="Submit">
+      <button id="btn-create" class="btn btn-success" type="button">Create</button>
+      <button id="btn-clear" class="btn btn-warning" type="button">Clear</button>
+    </form>
+    <form id="logoutForm" method="GET" action="/logout">
+      <input class="btn btn-warning" type="submit" value="Log out">
+    </form>
+  </div>
+</div>

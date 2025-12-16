@@ -1,0 +1,310 @@
+
+
+.shape-divider {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 0 15px;
+}
+
+.shape-divider-diagonal {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 0 15px;
+    transform: skewY(-3deg);
+}
+
+.shape-divider-diagonal .container {
+    transform: skewY(3deg);
+}
+.jumbotron {
+    margin-bottom: 2rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.song_a {
+    text-decoration: none !important;
+    color: white !important;
+    
+
+}
+
+
+
+.song_a:hover > .row{
+    background-color: rgb(44, 44, 44, 0.5) !important;
+    
+}
+
+.song_a p, .song_a h3, .song_a p.text-muted i{
+  transition: color 0.5s ease;
+}
+
+.song_a:hover p, .song_a:hover h3{
+  color: rgb(0, 123, 255);    
+}
+
+.song_a:hover p.text-muted i{
+  color: rgb(161, 149, 55);    
+}
+
+.song_a > .row {
+  position: relative;
+  border: none;
+  color: #FFFFFF;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.song_a > .row:after {
+  content: "";
+  background: rgb(113, 113, 113);
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.song_a > .row:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 0.5;
+  transition: 0s
+}
+
+.bor-bot{
+  border-top: none;border-left: none;border-right: none;--bs-focus-ring-color: rgba(var(--bs-success-rgb), .0)
+}
+
+.anim-hov-dplay:hover{
+  transform: translateY(-10px);
+}
+.anim-hov-dplay{
+  transition: ease 0.5s;
+  transform: translateY(0px);
+  
+}
+
+.anim-hov-dplay:hover .bi-star-fill{
+  color: yellow;
+}
+
+.anim-hov-dplay:hover .bi-upload{
+  color: rgb(51, 197, 255);
+}
+
+
+.anim-hov-dplay i{
+  transition: ease 0.5s;
+  color: white;
+}
+
+.toast-progress {
+  transition: width linear;
+}
+
+.toast{
+    pointer-events: none;
+}
+
+.toast button {
+  pointer-events: auto; /* re-enable only for close button */
+  z-index: 2; /* make sure it’s clickable above everything else */
+}
+
+.sign-btn:hover{
+  color:white !important;
+  background-color: #0d6efd !important;
+}
+
+.cover-picture {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+  /* background: url("../img/landscape-placeholder-svgrepo-com.png"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  border: rgba(255, 255, 255, 0.5) 2px dashed;
+  transition: 0.5s ease;
+  margin: 0 auto; /* Centers it horizontally */
+  background-color: rgba(0, 0, 0, 0);
+  background-blend-mode: darken;
+
+}
+
+.cover-picture:hover{
+  border: rgba(255, 255, 255, 1) 2px dashed;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: darken;
+}
+
+.song-upload{
+  height: fit;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: rgba(255, 255, 255, 0.5) 2px dashed;
+  transition: 0.5s ease;
+
+
+}
+
+.song-upload:hover{
+  border: rgba(255, 255, 255, 1) 2px dashed;
+
+}
+
+.song-upload p{
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.5s ease;
+
+}
+
+.song-upload:hover p{
+  color: rgba(255, 255, 255, 1);
+
+}
+
+.song-upload audio{
+  position: relative; 
+   z-index: 1;
+
+}
+
+.cover-picture p, .cover-picture i{
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.5s ease;
+}
+
+.cover-picture:hover p, .cover-picture:hover i{
+  color: white;
+}
+
+
+.file-uploader-img, .file-uploader-mus{
+  /* make it invisible */
+  opacity: 0;
+  /* make it take the full height and width of the parent container */
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  /* make it absolute positioned */
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+
+}
+
+.genre-select option{
+  background-color: rgb(74, 74, 74) ;
+  font-size: 16px;
+}
+
+.genre-select optgroup{
+  background-color: rgb(67, 67, 67) ;
+  font-size: 20px;
+}
+
+.desc-label::after{
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.sign-btn:hover{
+  color:white !important;
+  background-color: #0d6efd !important;
+}
+
+#waveform {
+    cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #003479;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #003479;
+  cursor: pointer;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #656565;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.speedLabel , .sliderContainer, .volumeContainer, .volumeLabel{
+  transition: 0.15s linear;
+}
+
+#tagsInputCheck {
+  display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+.fav-star{
+    transition: ease 0.5s;
+
+}
+
+.song-img-profile {
+  width: 100%;
+  height: auto;
+  max-width: 150px;  
+  max-height: 150px; 
+}
+
+.song-img-song {
+  width: 100%;
+  height: auto;
+  max-width: 300px;  
+  max-height: 300px; 
+}
+
+.accordion-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.accordion-body{
+    overflow-wrap: anywhere;
+
+}
+
+.ql-editor.ql-blank::before {
+  color: rgb(139, 139, 139) !important; /* Sets the placeholder color to red */
+}
