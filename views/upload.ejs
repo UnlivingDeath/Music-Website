@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DaBeat - Upload</title>
+
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <link href="/css/style.css" rel="stylesheet" />
+
+    <style>
+        body {
+          background: url("/img/StockCake-Neon_Music_Waves_1761699058.jpg") center/cover no-repeat;
+        }
+        body::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          background: inherit;
+          filter: blur(20px);
+          z-index: -1;
+        }
+    </style>
+  </head>
+
+  <body style="background-color: black;" class="text-white">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-50">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/home">
+          <h1><i class="bi bi-vinyl-fill"></i> DaBeat</h1>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDarkDropdown"
+          aria-controls="navbarNavDarkDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav nav nav-underline me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/home"><i class="bi bi-houses-fill"></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard"
+                ><i class="bi bi-music-player-fill"></i> Explore</a
+              >
+            </li>
+          </ul>
+
+          <hr class="d-lg-none text-white-50" />
+
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle fs-5"
+                href="#"
+                id="navbarDarkDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-person-circle"></i> <%= user.username %>
+              </a>
+
+              <ul
+                class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                aria-labelledby="navbarDarkDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item active" href="#"><i class="bi bi-upload"></i> Upload</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/profile"
+                    ><i class="bi bi-person-bounding-box"></i> Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-gear-fill"></i> Settings</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><h6 class="dropdown-header">Account actions</h6></li>
+                <li>
+                  <a class="dropdown-item" href="/logout"
+                    ><i class="bi bi-door-closed"></i> Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+
+      <div class="row bg-opacity-75 bg-dark d-flex align-items-top justify-content-center">
+        <div class="col-md-6 mt-3">
+          <div class="shadow-lg p-2 mb-4 bg-transparent rounded-3">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+              <h2 class="text-center m-3">
+                <i class="bi bi-file-earmark-music-fill"></i><br />
+                Upload your music to DaBeat.
+              </h2>
+
+              <div
+                class="mt-3 rounded cover-picture d-flex flex-column align-items-center justify-content-center"
+              >
+                <i class="bi fs-1 bi-image-alt"></i>
+                <p class="text-center">
+                  Click here to upload a cover for your song.<br />
+                  (File should not exceed 50MB. JPG, JPEG, PNG, WEBP are supported.)
+                </p>
+                <input
+                  class="file-uploader-img"
+                  type="file"
+                  id="coverImage"
+                  name="coverImage"
+                  onchange="changeCover()"
+                  accept=".jpg,.jpeg,.png,.webp"
+                />
+              </div>
+
+              <div class="form-floating mt-3">
+                <input
+                  name="title"
+                  type="text"
+                  class="form-control bg-transparent focus-ring bor-bot"
+                  id="floatingInputGroup1"
+                  placeholder=""
+                  required
+                />
+                <label for="floatingInputGroup1">Title</label>
+              </div>
+
+              <div class="form-floating mt-3">
+                <select
+                  class="form-select bor-bot focus-ring bg-transparent genre-select"
+                  id="floatingSelect"
+                  aria-label="Floating label select example"
+                  name="genre"
+                >
+                  <option value="any" selected>Any / Unknown</option>
+
+                    <optgroup label="🎤 Pop & Mainstream">
+                      <option value="pop">Pop</option>
+                      <option value="indie-pop">Indie Pop</option>
+                      <option value="k-pop">K-Pop</option>
+                      <option value="j-pop">J-Pop</option>
+                      <option value="vocaloid">Vocaloid</option>
+                      <option value="dance-pop">Dance Pop</option>
+                      <option value="electropop">Electropop</option>
+                    </optgroup>
+
+                    <optgroup label="🎸 Rock & Metal">
+                      <option value="rock">Rock</option>
+                      <option value="alternative">Alternative</option>
+                      <option value="indie-rock">Indie Rock</option>
+                      <option value="punk">Punk</option>
+                      <option value="metal">Metal</option>
+                      <option value="hard-rock">Hard Rock</option>
+                      <option value="grunge">Grunge</option>
+                    </optgroup>
+
+                    <optgroup label="🎧 Electronic & EDM">
+                      <option value="electronic">Electronic</option>
+                      <option value="house">House</option>
+                      <option value="techno">Techno</option>
+                      <option value="trance">Trance</option>
+                      <option value="dubstep">Dubstep</option>
+                      <option value="drum-and-bass">Drum and Bass</option>
+                      <option value="future-bass">Future Bass</option>
+                      <option value="hardstyle">Hardstyle</option>
+                      <option value="edm">EDM</option>
+                      <option value="synthwave">Synthwave</option>
+                      <option value="lofi">Lo-fi</option>
+                      <option value="chillout">Chillout</option>
+                      <option value="ambient">Ambient</option>
+                    </optgroup>
+
+                    <optgroup label="🎶 Hip-Hop & Urban">
+                      <option value="hip-hop">Hip-Hop</option>
+                      <option value="rap">Rap</option>
+                      <option value="trap">Trap</option>
+                      <option value="rnb">R&B</option>
+                      <option value="soul">Soul</option>
+                      <option value="funk">Funk</option>
+                    </optgroup>
+
+                    <optgroup label="🎻 Classical & Acoustic">
+                      <option value="classical">Classical</option>
+                      <option value="opera">Opera</option>
+                      <option value="instrumental">Instrumental</option>
+                      <option value="acoustic">Acoustic</option>
+                      <option value="soundtrack">Soundtrack</option>
+                      <option value="experimental">Experimental</option>
+                    </optgroup>
+
+                    <optgroup label="🌍 World & Cultural">
+                      <option value="reggae">Reggae</option>
+                      <option value="dancehall">Dancehall</option>
+                      <option value="reggaeton">Reggaeton</option>
+                      <option value="afrobeat">Afrobeat</option>
+                      <option value="latin">Latin</option>
+                      <option value="folk">Folk</option>
+                      <option value="country">Country</option>
+                      <option value="world">World</option>
+                    </optgroup>
+
+                    <optgroup label="🎺 Jazz, Blues & Soul">
+                      <option value="jazz">Jazz</option>
+                      <option value="blues">Blues</option>
+                      <option value="soul">Soul</option>
+                      <option value="gospel">Gospel</option>
+                    </optgroup>
+
+                    <optgroup label="🕺 Retro & Others">
+                      <option value="disco">Disco</option>
+                      <option value="ska">Ska</option>
+                      <option value="lofi">Lo-fi</option>
+                      <option value="chillout">Chillout</option>
+                      <option value="ambient">Ambient</option>
+                    </optgroup>
+                </select>
+                <label for="floatingSelect">Genre</label>
+              </div>
+
+              <div class="form-floating mt-3">
+                <textarea
+                  name="description"
+                  class="form-control focus-ring bg-transparent"
+                  id="floatingTextarea2"
+                  style="height: 200px; resize: none"
+                  maxlength="1000"
+                  placeholder=""
+                ></textarea>
+                <label for="floatingTextarea2" class="desc-label">Description (optional)</label>
+              </div>
+              <p class="text-white-50 mt-1 lh-sm" style="font-size: 14px;">State your behind the scenes, inspirations, or links to promote yourself or others. Whatever catches the listeners' eyes.<br>Max limit is 1000 characters.</p>
+
+              <div class="song-upload mt-3 p-3 rounded d-flex flex-column justify-content-center">
+                <p class="m-0">
+                  <i class="me-3 bi bi-file-earmark-play-fill"></i>
+                  Click here to upload your song.<br />
+                  (File should not exceed 50MB. MP3, WAV, OGG, FLAC, M4A are supported.)
+                </p>
+                <input
+                  class="file-uploader-mus"
+                  type="file"
+                  id="audioFile"
+                  onchange="uploadMusic()"
+                  name="audioFile"
+                  accept=".mp3,.wav,.ogg,.flac,.m4a"
+                  required
+                />
+              </div>
+
+              <div class="form-floating mt-3">
+                <textarea
+                  name="tags"
+                  class="form-control focus-ring bg-transparent tagsInput"
+                  id="floatingTextarea3"
+                  style="height: 100px; resize: none"
+                  maxlength="300"
+                  placeholder=""
+                ></textarea>
+                <label for="floatingTextarea3" class="desc-label">Tags (optional, but recommended)<br></label>
+              </div>
+              <p class="text-white-50 mt-1 lh-sm" style="font-size: 14px;">Add keywords to make your song easier to be searched up. Remember to separate them with spaces. Max limit is 300 characters.<br><span id="tagsInputCheck">There are currently no tags. Choose words that best describe your track!</span></p>
+
+              <button type="submit" onclick="disableButton(this)" class="my-3 btn btn-outline-primary w-100">
+                Upload
+              </button>
+              
+              <% if (error) { %>
+                  <div class="toast errorToast w-100 align-items-center text-bg-danger bg-opacity-10 border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="d-flex">
+                      <div class="toast-body fs-6">
+                            <i class="bi bi-exclamation-triangle" style="padding-right: 20px;"></i> <%= error %>
+                      </div>
+                      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                  </div>
+                  <div class="toast-progress bg-light" style="height: 1px; width: 100%; opacity: 0.2;"></div>
+
+                  </div>
+                <% } %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer bg-dark text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <nav>
+              <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">About us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Credits</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <hr class="text-white-50 mt-1 mb-2" />
+
+        <div class="row">
+          <div class="col-md-12 text-center pb-3">
+            <p class="mb-0">© 2025 DaBeat. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+<div class="modal fade" id="alertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-black bg-opacity-50 border border-danger">
+          <div class="modal-header border border-danger">
+            <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel"><i class="bi bi-exclamation-triangle me-3"></i> Alert</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+
+        </div>
+      </div>
+  </div>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/upload_scripts.js"></script>
+
+  </body>
+</html>
